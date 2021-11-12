@@ -9,6 +9,7 @@ export default function Home() {
                 <h1>Welcome to Lambda Eats</h1>
                 <p>Pizza of the coders!</p>
             </div>
+
         </div>
     )
 
