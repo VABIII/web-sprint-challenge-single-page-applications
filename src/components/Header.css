@@ -1,0 +1,11 @@
+.header-navs {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.NavLink {
+    text-decoration: none;
+    color: lightgray;
+    font-weight: bolder;
+}
