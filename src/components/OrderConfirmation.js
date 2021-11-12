@@ -2,7 +2,7 @@ import React from "react";
 
 
 export default function OrderConfirmation(props) {
-    const {} = props;
+
 
     return(
         <div>

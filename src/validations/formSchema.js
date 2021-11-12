@@ -9,13 +9,13 @@ const formSchema = yup.object().shape({
     size: yup
         .string()
         .oneOf(["Small", "Medium", "Large", "XL"], "Please pick a size."),
-    topping1: yup
+    pepperoni: yup
         .boolean(),
-    topping2: yup
+    bacon: yup
         .boolean(),
-    topping3: yup
+    sausage: yup
         .boolean(),
-    topping4: yup
+    chicken: yup
         .boolean(),
     special: yup
         .string()
