@@ -9,8 +9,6 @@ display: flex;
   
 `
 
-
-
 export default function OrderConfirmation(props) {
     const { order } = props;
 
@@ -38,8 +36,6 @@ export default function OrderConfirmation(props) {
             </div>
         </StyledDiv>
     )
-
-
 }
 
 
