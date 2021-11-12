@@ -32,18 +32,6 @@ export default function OrderConfirmation(props) {
 
 
 
-// {
-//     !!order.toppings && !!order.toppings.length &&
-//     <div>
-//         Toppings:&nbsp;
-//         <ul>
-//             {order.toppings.map((topping, i) => <li key={i}>{topping}</li> )
-//             </ul>
-//                 </div>
-//             }
-
-
-
 
 
 
