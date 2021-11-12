@@ -23,10 +23,6 @@ button {
     justify-content: center;
 }
 
-#special-text {
-    /*justify-content: center;*/
-    border: red 1px solid;
-}
 label {
     text-align: center;
 }

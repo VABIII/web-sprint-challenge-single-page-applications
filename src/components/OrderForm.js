@@ -50,31 +50,41 @@ export default function OrderForm(props) {
                         <input
                             type="checkbox"
                             name="pepperoni"
+                            value={values.pepperoni}
+                            onChange={onChange}
                         />
                     </label>
                     <label>Sausage:&nbsp;
                         <input
                             type="checkbox"
-
+                            name="sausage"
+                            value={values.sausage}
+                            onChange={onChange}
                         />
                     </label>
                     <label>Bacon:&nbsp;
                         <input
                             type="checkbox"
-
+                            name="bacon"
+                            value={values.bacon}
+                            onChange={onChange}
                         />
                     </label>
                     <label>Chicken:&nbsp;
                         <input
                             type="checkbox"
-
+                            name="chicken"
+                            value={values.chicken}
+                            onChange={onChange}
                         />
                     </label>
                     <label>Special Instructions:&nbsp;
                         <input
-                            type="text"
-                            f
                             id="special-text"
+                            type="text"
+                            name= "special"
+                            value={values.special}
+                            onChange={onChange}
                         />
                     </label>
                 <button>Submit</button>
@@ -82,9 +92,6 @@ export default function OrderForm(props) {
             </div>
         </form>
     )
-
-
-
 }
 
 
