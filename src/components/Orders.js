@@ -10,7 +10,7 @@ const initialFormValues = {
     sausage: false,
     bacon: false,
     chicken: false,
-    special: "",
+    special: ""
 }
 
 
@@ -19,7 +19,7 @@ export default function Orders() {
     const [formValues, setFormValues] = useState(initialFormValues);
     const [order, setOrder] = useState({});
     const values = formValues;
-
+    console.log((values))
     const placeOrder =newOrder => {
         axios.post(`https://reqres.in/api/orders`)
             .then(res => {
@@ -36,16 +36,13 @@ export default function Orders() {
 
     const onSubmit = evt => {
         evt.preventDefault();
-        // const newOrder = {
-        //     name: values.name,
-        //     size: values.size,
-        //     pepperoni: values.pepperoni,
-        //     sausage: values.sausage,
-        //     bacon: values.bacon,
-        //     chicken: values.chicken,
-        //     special: values.special
-        // }
-        // placeOrder(newOrder);
+        const newOrder = {
+            name: values.name,
+            size: values.size,
+            toppings: ["pepperoni", "sausage", "bacon", "chicken"].filter(hobby => !!formValues[hobby]),
+            special: values.special
+        }
+        placeOrder(newOrder);
     }
 
 
@@ -57,14 +54,13 @@ export default function Orders() {
                         onSubmit={onSubmit}
                         values={values}
                         setFormValues={setFormValues}
-
+                        order={order}
                     />
-                    : <OrderConfirmation order={order}/>
+                    : <OrderConfirmation values={values} order={order}/>
             }
         </div>
     )
 }
-
 
 
 

@@ -27,8 +27,11 @@ label {
     text-align: center;
 }
 
-
-
+.toppings {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
 
 
 

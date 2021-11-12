@@ -2,11 +2,27 @@ import React from "react";
 
 
 export default function OrderConfirmation(props) {
-    const { order } = props;
-
+    const { order, values } = props;
+        console.log(order)
     return(
         <div>
-            <h1>Your Order</h1>
+            <div className="confirmation-greeting">
+                <h1>Your Order</h1>
+            </div>
+            <div className="order-summary">
+                <h3>{order.name}</h3>
+                <p>{order.size}</p>
+                <p>{order.special}</p>
+                {
+                    !!order.toppings && !!order.toppings.length &&
+                    <div>
+                        Toppings:
+                        <ul>
+                            {order.toppings.map((like, idx) => <li key={idx}>{like}</li>)}
+                        </ul>
+                    </div>
+                }
+            </div>
         </div>
     )
 
@@ -16,7 +32,15 @@ export default function OrderConfirmation(props) {
 
 
 
-
+// {
+//     !!order.toppings && !!order.toppings.length &&
+//     <div>
+//         Toppings:&nbsp;
+//         <ul>
+//             {order.toppings.map((topping, i) => <li key={i}>{topping}</li> )
+//             </ul>
+//                 </div>
+//             }
 
 
 

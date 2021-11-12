@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import "./OrderForm.css"
 
 export default function OrderForm(props) {
-    const {onSubmit, values, setFormValues} = props;
+    const {onSubmit, values, setFormValues, order} = props;
+    const [disabled, setDisabled] = useState(true);
 
     const inputChange = (name, value) => {
         setFormValues({
@@ -15,6 +16,10 @@ export default function OrderForm(props) {
         const { name, value, checked, type } = evt.target;
         const realValue = type === "checkbox" ? checked: value;
         inputChange(name, realValue);
+    }
+
+    const onClick = evt => {
+        console.log(order)
     }
 
     return(
@@ -37,7 +42,12 @@ export default function OrderForm(props) {
                         />
                     </label>
                     <label>Size:&nbsp;
-                        <select name="size" id="size-dropdown">
+                        <select
+                            name="size"
+                            id="size-dropdown"
+                            value={values.size}
+                            onChange={onChange}
+                        >
                             <option value="">--Please Pick A Size--</option>
                             <option value="Small">Small</option>
                             <option value="Medium">Medium</option>
@@ -45,49 +55,55 @@ export default function OrderForm(props) {
                             <option value="X-Large">X-Large</option>
                         </select>
                     </label>
-                    <h4>Toppings</h4>
-                    <label>Pepperoni:&nbsp;
-                        <input
-                            type="checkbox"
-                            name="pepperoni"
-                            value={values.pepperoni}
-                            onChange={onChange}
-                        />
-                    </label>
-                    <label>Sausage:&nbsp;
-                        <input
-                            type="checkbox"
-                            name="sausage"
-                            value={values.sausage}
-                            onChange={onChange}
-                        />
-                    </label>
-                    <label>Bacon:&nbsp;
-                        <input
-                            type="checkbox"
-                            name="bacon"
-                            value={values.bacon}
-                            onChange={onChange}
-                        />
-                    </label>
-                    <label>Chicken:&nbsp;
-                        <input
-                            type="checkbox"
-                            name="chicken"
-                            value={values.chicken}
-                            onChange={onChange}
-                        />
-                    </label>
-                    <label>Special Instructions:&nbsp;
-                        <input
-                            id="special-text"
-                            type="text"
-                            name= "special"
-                            value={values.special}
-                            onChange={onChange}
-                        />
-                    </label>
-                <button>Submit</button>
+                    <div className="toppings">
+                        <h4>Toppings</h4>
+                        <label>Pepperoni:&nbsp;
+                            <input
+                                className="topping"
+                                type="checkbox"
+                                name="pepperoni"
+                                value={values.pepperoni}
+                                onChange={onChange}
+                            />
+                        </label>
+                        <label>Sausage:&nbsp;
+                            <input
+                                className="topping"
+                                type="checkbox"
+                                name="sausage"
+                                value={values.sausage}
+                                onChange={onChange}
+                            />
+                        </label>
+                        <label>Bacon:&nbsp;
+                            <input
+                                className="topping"
+                                type="checkbox"
+                                name="bacon"
+                                value={values.bacon}
+                                onChange={onChange}
+                            />
+                        </label>
+                        <label>Chicken:&nbsp;
+                            <input
+                                className="topping"
+                                type="checkbox"
+                                name="chicken"
+                                value={values.chicken}
+                                onChange={onChange}
+                            />
+                        </label>
+                        <label>Special Instructions:&nbsp;
+                            <input
+                                id="special-text"
+                                type="text"
+                                name= "special"
+                                value={values.special}
+                                onChange={onChange}
+                            />
+                        </label>
+                    </div>
+                <button id="order-button" onClick={onClick}>Submit</button>
                 </div>
             </div>
         </form>
