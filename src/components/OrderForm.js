@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./OrderForm.css"
 
 export default function OrderForm(props) {
     const {} = props;
@@ -55,6 +55,14 @@ export default function OrderForm(props) {
 
                         />
                     </label>
+                    <label>Special Instructions:&nbsp;
+                        <input
+                            type="text"
+                            f
+                            id="special-text"
+                        />
+                    </label>
+                <button>Submit</button>
                 </div>
             </div>
         </form>
