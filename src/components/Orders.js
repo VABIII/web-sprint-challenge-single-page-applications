@@ -35,23 +35,30 @@ export default function Orders() {
     }
 
     const onSubmit = evt => {
-        const newOrder = {
-            name: values.name,
-            size: values.size,
-            pepperoni: values.pepperoni,
-            sausage: values.sausage,
-            bacon: values.bacon,
-            chicken: values.chicken,
-            special: values.special
-        }
-        placeOrder(newOrder);
+        evt.preventDefault();
+        // const newOrder = {
+        //     name: values.name,
+        //     size: values.size,
+        //     pepperoni: values.pepperoni,
+        //     sausage: values.sausage,
+        //     bacon: values.bacon,
+        //     chicken: values.chicken,
+        //     special: values.special
+        // }
+        // placeOrder(newOrder);
     }
 
 
     return(
         <div>
             {
-                !isSubmitted ? <OrderForm/>
+                !isSubmitted ?
+                    <OrderForm
+                        onSubmit={onSubmit}
+                        values={values}
+                        setFormValues={setFormValues}
+
+                    />
                     : <OrderConfirmation order={order}/>
             }
         </div>

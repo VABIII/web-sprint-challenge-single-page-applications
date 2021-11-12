@@ -2,10 +2,23 @@ import React from "react";
 import "./OrderForm.css"
 
 export default function OrderForm(props) {
-    const {} = props;
+    const {onSubmit, values, setFormValues} = props;
+
+    const inputChange = (name, value) => {
+        setFormValues({
+            ...values,
+            [name]: value
+        });
+    }
+
+    const onChange = evt => {
+        const { name, value, checked, type } = evt.target;
+        const realValue = type === "checkbox" ? checked: value;
+        inputChange(name, realValue);
+    }
 
     return(
-        <form id="pizza-form">
+        <form id="pizza-form" onSubmit={onSubmit}>
             <div className="form-greeting">
                 <h2>Order A Pizza</h2>
             </div>
@@ -18,7 +31,9 @@ export default function OrderForm(props) {
                         <input
                             id="name-input"
                             type="text"
-
+                            name="name"
+                            value={values.name}
+                            onChange={onChange}
                         />
                     </label>
                     <label>Size:&nbsp;
