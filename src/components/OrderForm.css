@@ -33,6 +33,10 @@ label {
     text-align: center;
 }
 
+.form-errors {
+    color: red;
+    font-weight: bolder;
+}
 
 
 

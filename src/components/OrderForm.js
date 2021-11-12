@@ -1,11 +1,31 @@
 import React, {useState} from "react";
 import "./OrderForm.css"
+import * as yup from "yup";
+import schema from "../validations/formSchema";
+
+
+const initialErrorValues = {
+    name: "",
+}
+
+
 
 export default function OrderForm(props) {
     const {onSubmit, values, setFormValues, order} = props;
     const [disabled, setDisabled] = useState(true);
+    const [formErrors, setFormErrors] = useState(initialErrorValues);
+
+    const validate = (name, value) => {
+        yup.reach(schema, name)
+            .validate(value)
+            .then(() => {
+                setFormErrors({...formErrors, [name]:""})
+            })
+            .catch( err => setFormErrors({...formErrors, [name]:err.errors[0]}))
+    }
 
     const inputChange = (name, value) => {
+        validate(name, value)
         setFormValues({
             ...values,
             [name]: value
@@ -18,20 +38,19 @@ export default function OrderForm(props) {
         inputChange(name, realValue);
     }
 
-    const onClick = evt => {
-        console.log(order)
-    }
 
     return(
         <form id="pizza-form" onSubmit={onSubmit}>
             <div className="form-greeting">
                 <h2>Order A Pizza</h2>
             </div>
-            <div className="order-form div">
-                <div className="form-errors">
 
-                </div>
+            <div className="order-form div">
+
                 <div className="order-form inputs">
+                    <div className="form-errors">
+                        <div>{formErrors.name}</div><br/>
+                    </div>
                     <label>Name:&nbsp;
                         <input
                             id="name-input"
@@ -103,7 +122,7 @@ export default function OrderForm(props) {
                             />
                         </label>
                     </div>
-                <button id="order-button" onClick={onClick}>Submit</button>
+                <button id="order-button">Submit</button>
                 </div>
             </div>
         </form>

@@ -1,18 +1,30 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  
+`
+
 
 
 export default function OrderConfirmation(props) {
-    const { order, values } = props;
-        console.log(order)
+    const { order } = props;
+
     return(
-        <div>
+        <StyledDiv>
             <div className="confirmation-greeting">
                 <h1>Your Order</h1>
             </div>
             <div className="order-summary">
-                <h3>{order.name}</h3>
-                <p>{order.size}</p>
-                <p>{order.special}</p>
+
+
+                    <p>Name:&nbsp;{order.name}</p>
+                    <p>Size:&nbsp;{order.size}</p>
+
                 {
                     !!order.toppings && !!order.toppings.length &&
                     <div>
@@ -22,8 +34,9 @@ export default function OrderConfirmation(props) {
                         </ul>
                     </div>
                 }
+                <p>Special Instructions:&nbsp;{order.special}</p>
             </div>
-        </div>
+        </StyledDiv>
     )
 
 
