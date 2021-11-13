@@ -18,8 +18,6 @@ export default function OrderConfirmation(props) {
                 <h1>Your Order</h1>
             </div>
             <div className="order-summary">
-
-
                     <p>Name:&nbsp;{order.name}</p>
                     <p>Size:&nbsp;{order.size}</p>
 

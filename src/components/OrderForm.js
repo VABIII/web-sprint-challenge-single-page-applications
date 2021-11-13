@@ -3,16 +3,12 @@ import "./OrderForm.css"
 import * as yup from "yup";
 import schema from "../validations/formSchema";
 
-
 const initialErrorValues = {
     name: "",
 }
 
-
-
 export default function OrderForm(props) {
     const {onSubmit, values, setFormValues, order} = props;
-    const [disabled, setDisabled] = useState(true);
     const [formErrors, setFormErrors] = useState(initialErrorValues);
 
     const validate = (name, value) => {
@@ -37,8 +33,6 @@ export default function OrderForm(props) {
         const realValue = type === "checkbox" ? checked: value;
         inputChange(name, realValue);
     }
-
-
 
     return(
         <form id="pizza-form" onSubmit={onSubmit}>

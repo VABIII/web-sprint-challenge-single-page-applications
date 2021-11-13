@@ -2,8 +2,6 @@ import React, {useEffect, useState} from "react";
 import OrderForm from "./OrderForm";
 import OrderConfirmation from "./OrderConfirmation";
 import axios from "axios";
-import * as yup from "yup";
-import schema from "../validations/formSchema"
 
 const initialFormValues = {
     name: "",
@@ -15,16 +13,11 @@ const initialFormValues = {
     special: ""
 }
 
-
-
-
 export default function Orders() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [formValues, setFormValues] = useState(initialFormValues);
-
     const [order, setOrder] = useState({});
     const values = formValues;
-
 
     const placeOrder =newOrder => {
         axios.post(`https://reqres.in/api/orders`)
@@ -51,7 +44,6 @@ export default function Orders() {
         }
         placeOrder(newOrder);
     }
-
 
     return(
         <div>
