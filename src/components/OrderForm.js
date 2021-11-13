@@ -10,6 +10,7 @@ const initialErrorValues = {
 export default function OrderForm(props) {
     const {onSubmit, values, setFormValues, order} = props;
     const [formErrors, setFormErrors] = useState(initialErrorValues);
+    const [disabled, setDisabled] = useState(true);
 
     const validate = (name, value) => {
         yup.reach(schema, name)
@@ -19,6 +20,7 @@ export default function OrderForm(props) {
             })
             .catch( err => setFormErrors({...formErrors, [name]:err.errors[0]}))
     }
+
 
     const inputChange = (name, value) => {
         validate(name, value)
@@ -33,6 +35,10 @@ export default function OrderForm(props) {
         const realValue = type === "checkbox" ? checked: value;
         inputChange(name, realValue);
     }
+
+    useEffect(() => {
+        schema.isValid(values).then(valid => setDisabled(!valid))
+    }, [values])
 
     return(
         <form id="pizza-form" onSubmit={onSubmit}>
